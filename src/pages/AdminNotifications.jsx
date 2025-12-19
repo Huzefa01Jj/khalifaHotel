@@ -14,6 +14,11 @@ const AdminNotifications = () => {
     setBookings(storedBookings);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("adminUser");
+    navigate("/admin-login");
+  };
+
   const getStatusColor = (status) => {
     switch (status) {
       case "confirmed":
@@ -92,8 +97,27 @@ const AdminNotifications = () => {
       <div className="admin-page">
         <section className="admin-hero">
           <div className="container">
-            <h1>📊 Admin Dashboard</h1>
-            <p>Manage all customer reservations</p>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+              <div>
+                <h1>📊 Admin Dashboard</h1>
+                <p>Manage all customer reservations</p>
+              </div>
+              <button 
+                onClick={handleLogout}
+                style={{
+                  padding: '10px 20px',
+                  backgroundColor: '#e74c3c',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: 'bold'
+                }}
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </section>
 

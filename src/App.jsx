@@ -7,6 +7,8 @@ import MyBookings from "./pages/MyBookings";
 import AdminNotifications from "./pages/AdminNotifications";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AdminLogin from "./pages/AdminLogin";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -17,7 +19,8 @@ function App() {
         <Route path="/booking" element={<Booking />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/my-bookings" element={<MyBookings />} />
-        <Route path="/admin" element={<AdminNotifications />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin" element={<ProtectedRoute element={<AdminNotifications />} isAdmin={true} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>

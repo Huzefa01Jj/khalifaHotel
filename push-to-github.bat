@@ -7,7 +7,7 @@ echo ============================================
 echo.
 
 REM Navigate to project directory
-cd /d "C:\Users\Huzefa\Desktop\Coding projects\hotel_landing page\hotel-frontend"
+cd /d "C:\Users\Huzefa\Desktop\Hotel reservation project\hotel_landing page\hotel-frontend"
 
 echo Current directory: %cd%
 echo.

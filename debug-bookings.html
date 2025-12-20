@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Bookings</title>
+</head>
+<body>
+    <h1>Debug Bookings</h1>
+    <button onclick="checkBookings()">Check All Bookings</button>
+    <button onclick="clearBookings()">Clear All Bookings</button>
+    <div id="output"></div>
+
+    <script>
+        function checkBookings() {
+            const bookings = JSON.parse(localStorage.getItem("allBookings")) || [];
+            const output = document.getElementById("output");
+            output.innerHTML = `<h2>All Bookings (${bookings.length})</h2>`;
+            if (bookings.length === 0) {
+                output.innerHTML += "<p>No bookings found.</p>";
+            } else {
+                bookings.forEach((booking, index) => {
+                    output.innerHTML += `
+                        <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                            <h3>Booking ${index + 1}</h3>
+                            <p><strong>ID:</strong> ${booking.id}</p>
+                            <p><strong>Name:</strong> ${booking.firstName} ${booking.lastName}</p>
+                            <p><strong>Email:</strong> ${booking.email}</p>
+                            <p><strong>Status:</strong> ${booking.status}</p>
+                            <p><strong>Total Amount:</strong> $${booking.totalAmount?.toFixed(2)}</p>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function clearBookings() {
+            localStorage.removeItem("allBookings");
+            document.getElementById("output").innerHTML = "<p>All bookings cleared.</p>";
+        }
+
+        // Check on load
+        checkBookings();
+    </script>
+</body>
+</html>
